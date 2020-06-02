@@ -107,5 +107,5 @@ module.exports = {
     }
   },
   // 构建时开启多进程处理 babel 编译
-  parallel: require('os').cpus().length > 1,
+  parallel: require('os').cpus().length > 1
 }

@@ -28,9 +28,9 @@
 <!--        </div>-->
       </div>
     </div>
-    <div class="more">
-      <button @click="onMoreClick">加 载 更 多</button>
-    </div>
+<!--    <div class="more">-->
+<!--      <button @click="onMoreClick">加 载 更 多</button>-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -69,6 +69,7 @@
   @import "../../assets/iconfont/iconfont.css";
   .home-content {
     overflow: hidden;
+    padding-bottom: 100px;
     .article-wrapper {
       position: relative;
       display: flex;

@@ -13,7 +13,7 @@
 <style scoped lang="scss">
   .home-footer {
     height: 200px;
-    margin-top: 100px;
+    /*margin-top: 100px;*/
     color: #fff;
     text-align: center;
     background: #444;

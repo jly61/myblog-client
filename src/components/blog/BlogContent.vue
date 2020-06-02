@@ -21,7 +21,8 @@
         </div>
         <div class="blog-info" @click="onArticleClick(content.title)">
           <h3 class="blog-title">{{content.title}}</h3>
-          <p class="blog-desc">学的很学的很学的很学的很学的很学的很学的很学的很,很学的很学的很学的很学的很学,很学的很学的很学的很学的很,很学的很学的很学的很学的很学,很学的很学的很学的很学的很学
+          <p class="blog-desc">
+            {{content.article_desc}}
           </p>
         </div>
         <div class="blog-other">
@@ -119,7 +120,7 @@
     }
 
     .blog-wrapper {
-      padding: 0 80px 40px;
+      padding: 0 80px 100px;
       display: flex;
       justify-content: space-between;
       flex-flow: wrap;
@@ -130,6 +131,8 @@
       }
 
       .blog {
+        display: flex;
+        flex-direction: column;
         &:hover {
           cursor: pointer;
           box-shadow: 3px 3px #eaeaea;
@@ -150,6 +153,7 @@
         }
 
         .blog-info {
+          flex: 1;
           padding: 20px;
           border-bottom: 1px solid #eee;
 
