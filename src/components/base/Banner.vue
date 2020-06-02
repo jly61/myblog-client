@@ -12,7 +12,8 @@
 <style scoped lang="scss">
   .banner {
     height: 300px;
-    background: url("../../assets/images/home_banner.png") no-repeat center center;
+    background: url("../../assets/images/bg.jpg") no-repeat center center;
+    background-size: cover;
   }
   @media (max-width: 768px) {
     .banner {

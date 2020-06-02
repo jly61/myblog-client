@@ -7,9 +7,10 @@ function resolve (dir) {
 }
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '//your_url'
-    : '/',
+  // publicPath: process.env.NODE_ENV === 'production'
+  //   ? '//your_url'
+  //   : '/',
+  publicPath: './',
 
   outputDir: 'dist',
 
@@ -84,7 +85,8 @@ module.exports = {
   devServer: {
     open: false,
 
-    host: '127.0.0.1',
+    // host: '127.0.0.1',
+    host: '0.0.0.0',
 
     port: 8080,
 

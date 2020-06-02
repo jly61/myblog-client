@@ -27,8 +27,8 @@
     height: 100vh;
     /*padding-left: 190px;*/
     background-size: cover;
-    /*background: red url("../../assets/images/bg.jpg") no-repeat center center;*/
-    background: red url("../../assets/images/home_banner.png") no-repeat;
+    /*background: red url("../../assets/images/jpg") no-repeat center center;*/
+    background: red url("../../assets/images/bg.jpg") no-repeat center center;
     background-size: cover;
     color: #fff;
     box-sizing: border-box;
