@@ -31,3 +31,8 @@ export function getCategory (params) {
 export function getCategoryArticle (params) {
   return get(`${SERVER_URL}/category/article`, params)
 }
+
+// 获取配图列表
+export function getImageList (params) {
+  return get(`${SERVER_URL}/image`, params)
+}

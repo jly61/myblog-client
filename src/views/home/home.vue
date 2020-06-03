@@ -14,6 +14,7 @@
   import HomeContent from '../../components/home/HomeContent'
   import MessageDialog from '../../components/base/MessageDialog'
   import { getContentList } from '../../api'
+  import { throttle } from '../../utils/util'
 
   export default {
     name: 'home',
@@ -29,18 +30,32 @@
         isShowDialog: false
       }
     },
-    created () {
+    mounted () {
       this.$nextTick(() => {
         this.getContentList()
+        window.addEventListener('scroll', throttle(this.onScroll, 1000))
       })
     },
-    mounted () {
+    // 组件销毁后移除监听事件
+    destroyed () {
+      window.removeEventListener('scroll', throttle(this.onScroll, 1000))
     },
     methods: {
+      // 滚动加载
+      onScroll () {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        const clientHeight = document.documentElement.clientHeight || document.body.clientHeight
+        const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
+        if (clientHeight + scrollTop + 500 > scrollHeight) {
+          this.page++
+          this.getContentList()
+        }
+      },
       // 获取文章列表
       getContentList () {
         const params = {
-          page: this.page
+          page: this.page,
+          limit: 8
         }
         getContentList(params).then(res => {
           const data = res.data
@@ -53,6 +68,7 @@
               return
             }
             this.contentList.push(...data.result)
+            console.log(this.contentList)
           }
         })
       },

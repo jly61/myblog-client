@@ -1,8 +1,9 @@
 <template>
   <div class="home-content">
     <div class="article-wrapper" v-for="(content, index) in contentList" :key="index">
-      <a class="article-img" href="#" @click="onArticleClick(content.title)" >
-        <img src="../../assets/images/article_1.jpg">
+      <a class="article-img" href="#" @click="onArticleClick($event, content.title)" >
+<!--        <img src="../../assets/images/680x440.png">-->
+        <img :src="content.imgUrl">
       </a>
       <div class="article">
         <div class="article-info">
@@ -45,18 +46,21 @@
         return value.substr(0, 50)
       }
     },
-    mounted () {
-      this.$nextTick(() => {
-        for (let i = 0; i < this.contentList.length; i++) {
-          this.contentList[i].md_str = unescape(this.contentList[i].md_str)
-          this.contentList[i].html_str = unescape(this.contentList[i].html_str)
-        }
-        console.log(this.contentList)
-      })
+    created () {
+      for (let i = 0; i < this.contentList.length; i++) {
+        this.contentList[i].md_str = unescape(this.contentList[i].md_str)
+        this.contentList[i].html_str = unescape(this.contentList[i].html_str)
+      }
     },
     methods: {
-      onArticleClick (title) {
-        this.$router.push(`/detail?title=${title}`)
+      onArticleClick (e, title) {
+        e.preventDefault()
+        this.$router.push({
+          path: '/detail',
+          query: {
+            title: title
+          }
+        })
       },
       onMoreClick () {
         this.$emit('onMoreClick')
@@ -89,6 +93,10 @@
       .article-img {
         width: 680px;
         height: 440px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
       .article {
         display: flex;

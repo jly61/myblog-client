@@ -29,7 +29,7 @@
       if (this.$route.query.title) {
         this.getArticle()
       } else {
-        this.$router.push('/')
+        // this.$router.push('/')
       }
     },
     methods: {
@@ -48,6 +48,8 @@
             this.content.update_time = this.content.update_time.split('T')[0]
             this.content.html_str = unescape(this.content.html_str)
             this.content.md_str = unescape(this.content.md_str)
+          } else {
+            // this.$router.push('/')
           }
         })
       }

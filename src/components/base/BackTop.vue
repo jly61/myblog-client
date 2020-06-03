@@ -1,6 +1,6 @@
 <template>
     <div class="back-top" v-if="isShow" @click="onBackTop">
-      <i class="iconfont icon-feiji"></i>
+      <i class="iconfont icon-huojian"></i>
     </div>
 </template>
 
@@ -52,6 +52,7 @@
     .back-top {
       i {
         font-size: 40px;
+        color: #8a8a8a;
       }
     }
   }

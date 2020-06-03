@@ -9,6 +9,8 @@
   import Banner from '../../components/base/Banner'
   import BlogContent from '../../components/blog/BlogContent'
   import { getContentList, getCategory } from '../../api'
+  import { throttle } from '../../utils/util'
+
   export default {
     name: 'blog',
     components: {
@@ -23,13 +25,28 @@
         isShowDialog: false
       }
     },
-    created () {
+    mounted () {
       this.$nextTick(() => {
         this.getCategory()
         this.getContentList()
+        window.addEventListener('scroll', throttle(this.onScroll, 1000))
       })
     },
+    // 组件销毁后移除监听事件
+    destroyed () {
+      window.removeEventListener('scroll', throttle(this.onScroll, 1000))
+    },
     methods: {
+      // 滚动加载
+      onScroll () {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        const clientHeight = document.documentElement.clientHeight || document.body.clientHeight
+        const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
+        if (clientHeight + scrollTop + 300 > scrollHeight) {
+          this.page++
+          this.getContentList()
+        }
+      },
       // 获取文章分类
       getCategory () {
         getCategory().then(res => {
@@ -42,7 +59,8 @@
       // 获取文章列表
       getContentList () {
         const params = {
-          page: this.page
+          page: this.page,
+          limit: 20
         }
         getContentList(params).then(res => {
           const data = res.data

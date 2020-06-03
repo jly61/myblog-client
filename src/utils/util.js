@@ -28,3 +28,18 @@ export function post (url, params) {
     })
   })
 }
+
+// 节流
+export function throttle (fn, delay = 500) {
+  let flag = true
+  return () => {
+    if (flag === false) {
+      return false
+    }
+    flag = false
+    setTimeout(function () {
+      fn()
+      flag = true
+    }, 500)
+  }
+}

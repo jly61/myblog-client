@@ -17,7 +17,8 @@
            :key="index"
       >
         <div class="blog-img" @click="onArticleClick(content.title)">
-          <img src="http://qbaj8dxcr.bkt.clouddn.com/bg.jpg" alt="">
+<!--          <img src="../../assets/images/680x440.png" alt="">-->
+          <img :src="content.imgUrl" alt="">
         </div>
         <div class="blog-info" @click="onArticleClick(content.title)">
           <h3 class="blog-title">{{content.title}}</h3>
@@ -32,6 +33,7 @@
           <div class="update-time">{{content.update_time}}</div>
         </div>
       </div>
+      <i></i><i></i><i></i><i></i><i></i>
     </div>
   </div>
 </template>
@@ -89,7 +91,7 @@
     background: #efefef;
     .blog-category {
       background: #fff;
-      padding: 0 80px 10px;
+      padding: 0 50px 10px;
       /*height: 60px;*/
       display: flex;
       flex-flow: wrap;
@@ -120,25 +122,33 @@
     }
 
     .blog-wrapper {
-      padding: 0 80px 100px;
       display: flex;
       justify-content: space-between;
       flex-flow: wrap;
+      padding: 0 50px 100px;
 
-      &:after {
-        content: "";
-        width: 330px;
+      i {
+        width: 19%;
       }
+      /*&:after {*/
+      /*  content: "";*/
+      /*  flex: auto;*/
+      /*}*/
 
       .blog {
         display: flex;
         flex-direction: column;
         &:hover {
           cursor: pointer;
-          box-shadow: 3px 3px #eaeaea;
+          box-shadow: 5px 5px #eaeaea;
         }
+        /*&:last-child {*/
+        /*  margin-right: auto;*/
+        /*}*/
 
-        max-width: 330px;
+        /*max-width: 330px;*/
+        max-width: 19%;
+        min-width: 280px;
         margin-top: 15px;
         background: #fff;
 
@@ -187,7 +197,105 @@
       }
     }
   }
+  @media (max-width: 1366px) {
+    .blog-content {
+      .blog-category {
+        button {
+        }
+      }
 
+      .blog-wrapper {
+        &:after {
+          content: "";
+          min-width: 300px;
+        }
+        .blog {
+          max-width: 24%;
+          .blog-img {
+          }
+
+          .blog-info {
+            h3 {
+            }
+
+            .blog-desc {
+            }
+          }
+
+          .blog-other {
+            .blog-tag:hover {
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 1240px) {
+    .blog-content {
+      .blog-category {
+        button {
+        }
+      }
+
+      .blog-wrapper {
+        &:after {
+          content: "";
+          min-width: 300px;;
+        }
+        .blog {
+          max-width: 33%;
+          .blog-img {
+          }
+
+          .blog-info {
+            h3 {
+            }
+
+            .blog-desc {
+            }
+          }
+
+          .blog-other {
+            .blog-tag:hover {
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 960px) {
+    .blog-content {
+      .blog-category {
+        button {
+        }
+      }
+
+      .blog-wrapper {
+        &:after {
+          content: "";
+          min-width: 300px;;
+        }
+        .blog {
+          max-width: 49%;
+          .blog-img {
+          }
+
+          .blog-info {
+            h3 {
+            }
+
+            .blog-desc {
+            }
+          }
+
+          .blog-other {
+            .blog-tag:hover {
+            }
+          }
+        }
+      }
+    }
+  }
   @media (max-width: 768px) {
     .blog-content {
       .blog-category {
@@ -200,7 +308,7 @@
         display: flex;
         /*flex-direction: row;*/
         justify-content: center;
-        padding: 0 10px;
+        padding: 0 10px 40px;
         .blog {
           max-width: 100%;
           .blog-img {
