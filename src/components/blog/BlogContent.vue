@@ -17,7 +17,7 @@
            :key="index"
       >
         <div class="blog-img" @click="onArticleClick(content.title)">
-          <img src="../../assets/images/home_banner.png" alt="">
+          <img src="http://qbaj8dxcr.bkt.clouddn.com/bg.jpg" alt="">
         </div>
         <div class="blog-info" @click="onArticleClick(content.title)">
           <h3 class="blog-title">{{content.title}}</h3>
