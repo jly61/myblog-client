@@ -28,7 +28,7 @@
     /*padding-left: 190px;*/
     background-size: cover;
     /*background: red url("../../assets/images/jpg") no-repeat center center;*/
-    background: red url("../../assets/images/bg.jpg") no-repeat center center;
+    background: rgb(176, 14, 37) url("http://qbaj8dxcr.bkt.clouddn.com/bg.jpg") no-repeat center center;
     background-size: cover;
     color: #fff;
     box-sizing: border-box;
