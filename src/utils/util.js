@@ -9,7 +9,6 @@ export function get (url, params) {
         reject(res)
       }
     }).catch(err => {
-      console.log(err)
       reject(err)
     })
   })

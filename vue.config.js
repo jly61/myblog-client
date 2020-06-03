@@ -58,10 +58,20 @@ module.exports = {
     // 修改文件引入自定义路径
     config.resolve.alias
       .set('@', resolve('src'))
+    config.module
+      .rule('images')
+      .use('image-webpack-loader')
+      .loader('image-webpack-loader')
+      .options({
+        bypassOnDebug: true
+      })
+      .end()
   },
 
   // 配置高于chainWebpack中关于 css loader 的配置
   css: {
+    // 是否使用css分离插件 ExtractTextPlugin
+    extract: true,
     // 是否开启支持 foo.module.css 样式
     requireModuleExtension: false,
 
@@ -69,15 +79,7 @@ module.exports = {
     sourceMap: false,
 
     // css预设器配置项
-    loaderOptions: {
-      css: {
-        // options here will be passed to css-loader
-      },
-
-      postcss: {
-
-      }
-    }
+    loaderOptions: {}
   },
 
   // All options for webpack-dev-server are supported

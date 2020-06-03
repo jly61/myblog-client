@@ -55,7 +55,7 @@
       getContentList () {
         const params = {
           page: this.page,
-          limit: 8
+          limit: 6
         }
         getContentList(params).then(res => {
           const data = res.data
@@ -67,8 +67,11 @@
               }, 2000)
               return
             }
+            data.result.forEach(item => {
+              item.update_time = item.update_time.split('T')[0]
+            })
             this.contentList.push(...data.result)
-            console.log(this.contentList)
+            // console.log(this.contentList)
           }
         })
       },
