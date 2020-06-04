@@ -1,20 +1,24 @@
 <template>
-  <div class="nav-wrapper">
-    <h1 @click="onTitleClick">橘·瑠衣</h1>
-    <nav v-if="showNav" @click="onCloseClick">
-      <router-link to="/" class="router">首页</router-link>
-      <router-link to="/blog" class="router">分类</router-link>
-      <router-link to="/self" class="router">关于</router-link>
-      <a href="https://github.com/Lovelesss" class="router" target="_blank">GitHub</a>
-    </nav>
-    <div class="nav-bar-menu" :class="{transparent: showNav}">
-      <i class="iconfont icon-caidan" @click="onMenuClick" v-if="!showNav"></i>
-      <i class="iconfont icon-guanbi" @click="onCloseClick" v-if="showNav"></i>
+  <div>
+    <div class="nav-wrapper">
+      <h1 @click="onTitleClick">橘·瑠衣</h1>
+      <nav v-if="showNav" @click="onCloseClick">
+        <router-link to="/" class="router">首页</router-link>
+        <router-link to="/blog" class="router">分类</router-link>
+        <router-link to="/self" class="router">关于</router-link>
+        <a href="https://github.com/Lovelesss" class="router" target="_blank">GitHub</a>
+      </nav>
+      <div class="nav-bar-menu" :class="{transparent: showNav}">
+        <i class="iconfont icon-caidan" @click="onMenuClick" v-if="!showNav"></i>
+        <i class="iconfont icon-guanbi" @click="onCloseClick" v-if="showNav"></i>
+      </div>
     </div>
+    <Modal v-if="showModal"/>
   </div>
 </template>
 
 <script>
+  import Modal from './Modal'
   export default {
     name: 'Nav',
     data () {
@@ -22,12 +26,20 @@
         showNav: false,
         toShow: 'toShow',
         toHidden: 'toHidden',
-        clientWidth: 0
+        clientWidth: 0,
+        showModal: false
       }
+    },
+    components: {
+      Modal
     },
     watch: {
       clientWidth (val) {
         this.clientWidth = val
+        if (this.clientWidth > 769) {
+          this.showModal = false
+          document.documentElement.style.overflowY = 'scroll'
+        }
         this.showNav = this.clientWidth > 769
       }
     },
@@ -45,9 +57,11 @@
       },
       onMenuClick () {
         this.showNav = true
+        this.showModal = true
         document.documentElement.style.overflowY = 'hidden'
       },
       onCloseClick () {
+        this.showModal = false
         if (this.clientWidth <= 768) {
           this.showNav = false
         }
