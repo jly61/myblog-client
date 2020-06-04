@@ -11,6 +11,10 @@
     name: 'self',
     components: {
       SelfAbout
+    },
+    beforeRouteLeave (to, from, next) {
+      to.meta.keepAlive = false
+      next()
     }
   }
 </script>
@@ -32,7 +36,7 @@
   }
 </style>
 <style lang="scss">
-  .home-footer {
-    display: none !important;
-  }
+  /*.home-footer {*/
+  /*  display: none !important;*/
+  /*}*/
 </style>

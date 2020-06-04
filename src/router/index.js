@@ -25,11 +25,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/detail/detail.vue'),
     meta: {
       keepAlive: false
-    },
-    beforeEnter (to, from, next) {
-      from.meta.keepAlive = true
-      next()
     }
+    // beforeEnter (to, from, next) {
+    //   from.meta.keepAlive = true
+    //   next()
+    // }
   },
   {
     path: '/blog',

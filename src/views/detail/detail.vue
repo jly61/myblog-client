@@ -23,7 +23,8 @@
     data () {
       return {
         content: {},
-        like: {}
+        like: {},
+        lastRouter: ''
       }
     },
     mounted () {
@@ -34,8 +35,17 @@
         this.$router.push('/')
       }
     },
+    // 判断去往的路由是否是进来的路由，从而判断是否缓存进来的路由
+    beforeRouteEnter (to, from, next) {
+      from.meta.keepAlive = true
+      next(vm => {
+        vm.lastRouter = from.path
+      })
+    },
     beforeRouteLeave (to, from, next) {
-      to.meta.keepAlive = false
+      if (to.path !== this.lastRouter) {
+        to.meta.keepAlive = false
+      }
       next()
     },
     methods: {
