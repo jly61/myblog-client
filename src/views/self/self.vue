@@ -24,14 +24,15 @@
     display: flex;
     justify-content: center;
     /*align-items: center;*/
-    padding-top: 150px;
-    min-height: 90vh;
+    padding: 100px 0 80px;
+    min-height: calc(100vh - 200px);
     box-sizing: border-box;
   }
   @media (max-width: 768px) {
     .self {
       height: 90vh;
-      padding: 50px 20px 0;
+      padding: 50px 20px 80px;
+      box-sizing: content-box;
     }
   }
 </style>
