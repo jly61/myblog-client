@@ -13,7 +13,9 @@
 
 <script>
   export default {
-    name: 'HomeBanner'
+    name: 'HomeBanner',
+    methods: {
+    }
   }
 </script>
 

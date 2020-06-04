@@ -1,19 +1,36 @@
 <template>
     <div class="self">
-      <Banner />
+<!--      <Banner />-->
+      <SelfAbout />
     </div>
 </template>
 
 <script>
-  import Banner from '../../components/base/Banner'
+  import SelfAbout from '../../components/self/SelfAbout'
   export default {
     name: 'self',
     components: {
-      Banner
+      SelfAbout
     }
   }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  .self {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  @media (max-width: 768px) {
+    .self {
+      height: 90vh;
+      padding: 0 20px;
+    }
+  }
+</style>
+<style lang="scss">
+  .home-footer {
+    display: none !important;
+  }
 </style>

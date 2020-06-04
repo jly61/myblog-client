@@ -1,6 +1,6 @@
 <template>
     <div class="home-footer">
-      <p>Design & Code by @毫无波动</p>
+      <p>Code by @毫无波动</p>
     </div>
 </template>
 

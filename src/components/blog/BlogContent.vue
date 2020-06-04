@@ -50,7 +50,8 @@
     data () {
       return {
         currentIndex: 100,
-        articleList: []
+        articleList: [],
+        lastCategory: '全部' // 上一次请求分类名称，防止重复请求
       }
     },
     mounted () {
@@ -65,6 +66,10 @@
     methods: {
       // 切换分类
       onCategoryChange (category, index) {
+        if (category === this.lastCategory) {
+          console.log(this.lastCategory)
+          return
+        }
         this.currentIndex = index
         const params = {
           categoryName: category
@@ -73,6 +78,7 @@
           const data = res.data
           if (data.status === 0) {
             this.articleList = data.result
+            this.lastCategory = category
           }
         })
       },
@@ -88,7 +94,6 @@
 
 <style scoped lang="scss">
   .blog-content {
-    background: #efefef;
     .blog-category {
       background: #fff;
       padding: 0 50px 10px;
@@ -165,6 +170,7 @@
         .blog-info {
           flex: 1;
           padding: 20px;
+          min-height: 100px;
           border-bottom: 1px solid #eee;
 
           h3 {

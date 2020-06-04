@@ -11,13 +11,13 @@
 
 <style scoped lang="scss">
   .banner {
-    height: 300px;
+    height: 450px;
     background: url("http://qbaj8dxcr.bkt.clouddn.com/bg.jpg") no-repeat center center;
     background-size: cover;
   }
   @media (max-width: 768px) {
     .banner {
-      max-height: 240px;
+      max-height: 300px;
     }
   }
 </style>

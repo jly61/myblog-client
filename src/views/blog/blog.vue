@@ -85,5 +85,9 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+  .blog-category {
+    min-height: calc(100vh - 200px);
+    background: #efefef;
+  }
 </style>

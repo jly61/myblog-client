@@ -1,11 +1,10 @@
 <template>
   <div class="nav-wrapper">
-    <h1>橘·瑠衣</h1>
+    <h1 @click="onTitleClick">橘·瑠衣</h1>
     <nav v-if="showNav" @click="onCloseClick">
       <router-link to="/" class="router">首页</router-link>
       <router-link to="/blog" class="router">分类</router-link>
-<!--      <router-link to="/" class="router">杂项</router-link>-->
-      <router-link to="/self" class="router">个人</router-link>
+      <router-link to="/self" class="router">关于</router-link>
       <a href="https://github.com/Lovelesss" class="router" target="_blank">GitHub</a>
     </nav>
     <div class="nav-bar-menu" :class="{transparent: showNav}">
@@ -39,6 +38,11 @@
       })
     },
     methods: {
+      onTitleClick () {
+        if (this.$route.name !== 'Home') {
+          this.$router.replace('/')
+        }
+      },
       onMenuClick () {
         this.showNav = true
         document.documentElement.style.overflowY = 'hidden'
@@ -59,13 +63,14 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 80px;
+    padding: 0 50px;
     position: fixed;
     height: 60px;
     background: #fff;
     z-index: 999;
     box-sizing: border-box;
     color: #444;
+    border-bottom: 1px solid #eee;
     h1 {
       font-size: 22px;
     }
@@ -113,7 +118,7 @@
       .nav-bar-menu {
         display: block;
         i {
-          font-size: 36px;
+          font-size: 32px;
         }
       }
     }
