@@ -82,6 +82,9 @@
               }, 2000)
               return
             }
+            data.result.forEach(item => {
+              item.update_time = item.update_time.split('T')[0]
+            })
             this.contentList.push(...data.result)
           }
         })
