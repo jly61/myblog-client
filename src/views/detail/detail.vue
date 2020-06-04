@@ -26,10 +26,6 @@
         like: {}
       }
     },
-    // beforeRouteLeave (to, from, next) {
-    //   console.log(to)
-    //   console.log(from)
-    // },
     mounted () {
       if (this.$route.query.title) {
         initScrollPosition()
@@ -37,6 +33,10 @@
       } else {
         this.$router.push('/')
       }
+    },
+    beforeRouteLeave (to, from, next) {
+      to.meta.keepAlive = false
+      next()
     },
     methods: {
       getArticle () {

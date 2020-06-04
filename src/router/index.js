@@ -51,10 +51,6 @@ const routes = [
     component: () => import('../views/self/self.vue'),
     meta: {
       keepAlive: false
-    },
-    beforeEnter (to, from, next) {
-      from.meta.keepAlive = false
-      next()
     }
   },
   {
@@ -74,12 +70,6 @@ const router = new VueRouter({
   mode: 'hash',
   base: process.env.BASE_URL,
   routes
-  // scrollBehavior () {
-  //   return {
-  //     x: 0,
-  //     y: 0
-  //   }
-  // }
 })
 
 export default router
