@@ -8,7 +8,7 @@
       </keep-alive>
     </transition>
     <transition name="fade" mode="out-in">
-      <router-view class="transitionBody" v-if="!$route.meta.keepAlive"/>
+      <router-view class="transitionBody" v-if="!$route.meta.keepAlive" />
     </transition>
     <Footer/>
   </div>

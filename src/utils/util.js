@@ -42,3 +42,8 @@ export function throttle (fn, delay = 500) {
     }, 500)
   }
 }
+
+// 滚动条位置初始化
+export function initScrollPosition (scroll = 0) {
+  window.scrollTo(0, 0)
+}

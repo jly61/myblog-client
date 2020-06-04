@@ -8,22 +8,54 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      keepAlive: true
+    },
+    beforeEnter (to, from, next) {
+      if (from.path !== '/detail' || from.query.title) {
+        from.meta.keepAlive = false
+        next()
+      }
+    }
   },
   {
     path: '/detail',
     name: 'Detail',
-    component: () => import(/* webpackChunkName: "about" */ '../views/detail/detail.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/detail/detail.vue'),
+    meta: {
+      keepAlive: false
+    },
+    beforeEnter (to, from, next) {
+      from.meta.keepAlive = true
+      next()
+    }
   },
   {
     path: '/blog',
     name: 'Blog',
-    component: () => import('../views/blog/blog.vue')
+    component: () => import('../views/blog/blog.vue'),
+    meta: {
+      keepAlive: true
+    },
+    beforeEnter (to, from, next) {
+      if (from.path !== '/detail' || from.query.title) {
+        from.meta.keepAlive = false
+        next()
+      }
+    }
   },
   {
     path: '/self',
     name: 'Self',
-    component: () => import('../views/self/self.vue')
+    component: () => import('../views/self/self.vue'),
+    meta: {
+      keepAlive: false
+    },
+    beforeEnter (to, from, next) {
+      from.meta.keepAlive = false
+      next()
+    }
   },
   {
     path: '/login',

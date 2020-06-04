@@ -27,25 +27,36 @@
       return {
         contentList: [],
         page: 1,
-        isShowDialog: false
+        isShowDialog: false,
+        scroll: 0 // 记录滚动高度
       }
     },
     mounted () {
       this.$nextTick(() => {
         this.getContentList()
+        this.goTop()
         window.addEventListener('scroll', throttle(this.onScroll, 1000))
       })
     },
     // 组件销毁后移除监听事件
-    destroyed () {
+    deactivated () {
       window.removeEventListener('scroll', throttle(this.onScroll, 1000))
     },
+    beforeRouteLeave (to, from, next) {
+      to.meta.keepAlive = false
+      next()
+    },
     methods: {
+      // 设置滚动条位置
+      goTop () {
+        window.scrollTo(0, 0)
+      },
       // 滚动加载
       onScroll () {
         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
         const clientHeight = document.documentElement.clientHeight || document.body.clientHeight
         const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
+        this.scroll = document.documentElement.scrollTop || document.body.scrollTop
         if (clientHeight + scrollTop + 500 > scrollHeight) {
           this.page++
           this.getContentList()

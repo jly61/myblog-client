@@ -22,21 +22,31 @@
         contentList: [],
         category: [],
         page: 1,
-        isShowDialog: false
+        isShowDialog: false,
+        scroll: 0
       }
     },
     mounted () {
       this.$nextTick(() => {
         this.getCategory()
         this.getContentList()
+        this.goTop()
         window.addEventListener('scroll', throttle(this.onScroll, 1000))
       })
     },
     // 组件销毁后移除监听事件
-    destroyed () {
+    deactivated () {
       window.removeEventListener('scroll', throttle(this.onScroll, 1000))
     },
+    beforeRouteLeave (to, from, next) {
+      to.meta.keepAlive = false
+      next()
+    },
     methods: {
+      // 设置滚动条位置
+      goTop () {
+        window.scrollTo(0, 0)
+      },
       // 滚动加载
       onScroll () {
         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop

@@ -1,8 +1,8 @@
 <template>
   <div class="detail">
-    <Banner />
+    <Banner/>
     <DetailArticle :content="content"/>
-<!--    <DetailShare :like="like"/>-->
+    <!--    <DetailShare :like="like"/>-->
   </div>
 </template>
 
@@ -11,6 +11,7 @@
   import DetailArticle from '../../components/detail/DetailArticle'
   // import DetailShare from '../../components/detail/DetailShare'
   import { getArticle } from '../../api'
+  import { initScrollPosition } from '../../utils/util'
 
   export default {
     name: 'detail',
@@ -25,11 +26,16 @@
         like: {}
       }
     },
+    // beforeRouteLeave (to, from, next) {
+    //   console.log(to)
+    //   console.log(from)
+    // },
     mounted () {
       if (this.$route.query.title) {
+        initScrollPosition()
         this.getArticle()
       } else {
-        // this.$router.push('/')
+        this.$router.push('/')
       }
     },
     methods: {
@@ -49,7 +55,7 @@
             this.content.html_str = unescape(this.content.html_str)
             this.content.md_str = unescape(this.content.md_str)
           } else {
-            // this.$router.push('/')
+            this.$router.push('/')
           }
         })
       }
