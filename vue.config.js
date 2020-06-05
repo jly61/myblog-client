@@ -1,4 +1,8 @@
 const path = require('path')
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+
+// 定义压缩文件类型
+const productionGzipExtensions = ['js', 'css']
 
 // const webpack = require('webpack')
 
@@ -17,10 +21,6 @@ module.exports = {
   assetsDir: 'static',
 
   filenameHashing: true,
-
-  // When building in multi-pages mode, the webpack config will contain different plugins
-  // (there will be multiple instances of html-webpack-plugin and preload-webpack-plugin).
-  // Make sure to run vue inspect if you are trying to modify the options for those plugins.
   pages: {
     index: {
       // entry for the pages
@@ -50,6 +50,20 @@ module.exports = {
   // 生产环境 sourceMap
   productionSourceMap: false,
   configureWebpack: (config) => {
+    if (process.env.NODE_ENV === 'production') {
+      return {
+        plugins: [
+          new CompressionWebpackPlugin({
+            filename: '[path].gz[query]',
+            algorithm: 'gzip',
+            test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'), // 匹配文件名
+            threshold: 10240, // 对10K以上的数据进行压缩
+            minRatio: 0.8,
+            deleteOriginalAssets: false // 是否删除源文件
+          })
+        ]
+      }
+    }
   },
 
   // webpack 链接 API，用于生成和修改 webapck 配置

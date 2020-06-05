@@ -67,7 +67,7 @@
       // 切换分类
       onCategoryChange (category, index) {
         if (category === this.lastCategory) {
-          console.log(this.lastCategory)
+          // console.log(this.lastCategory)
           return
         }
         this.currentIndex = index

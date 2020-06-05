@@ -61,9 +61,9 @@
         register(params).then(res => {
           const data = res.data
           if (data.status === 2) {
-            console.log('用户名已存在')
+            // console.log('用户名已存在')
           } else if (data.status === 0) {
-            console.log('注册成功')
+            // console.log('注册成功')
             this.$router.push('/login')
           }
         })
