@@ -11,7 +11,6 @@
   import DetailArticle from '../../components/detail/DetailArticle'
   // import DetailShare from '../../components/detail/DetailShare'
   import { getArticle } from '../../api'
-  import { initScrollPosition } from '../../utils/util'
 
   export default {
     name: 'detail',
@@ -29,7 +28,7 @@
     },
     mounted () {
       if (this.$route.query.title) {
-        initScrollPosition()
+        window.scrollTo(0, 0)
         this.getArticle()
       } else {
         this.$router.push('/')
@@ -45,6 +44,7 @@
     beforeRouteLeave (to, from, next) {
       if (to.path !== this.lastRouter) {
         to.meta.keepAlive = false
+        this.$store.commit('changeScrollTop', 0)
       }
       next()
     },

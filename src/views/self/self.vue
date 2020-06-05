@@ -12,6 +12,9 @@
     components: {
       SelfAbout
     },
+    mounted () {
+      window.scrollTo(0, 0)
+    },
     beforeRouteLeave (to, from, next) {
       to.meta.keepAlive = false
       next()

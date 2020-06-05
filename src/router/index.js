@@ -11,25 +11,18 @@ const routes = [
     component: Home,
     meta: {
       keepAlive: true
-    },
-    beforeEnter (to, from, next) {
-      if (from.path !== '/detail' || from.query.title) {
-        from.meta.keepAlive = false
-        next()
-      }
     }
+    // beforeEnter (to, from, next) {
+    //   if (from.path !== '/detail' || from.query.title) {
+    //     from.meta.keepAlive = false
+    //     next()
+    //   }
+    // }
   },
   {
     path: '/detail',
     name: 'Detail',
-    component: () => import(/* webpackChunkName: "about" */ '../views/detail/detail.vue'),
-    meta: {
-      keepAlive: false
-    }
-    // beforeEnter (to, from, next) {
-    //   from.meta.keepAlive = true
-    //   next()
-    // }
+    component: () => import('../views/detail/detail.vue')
   },
   {
     path: '/blog',
@@ -37,21 +30,18 @@ const routes = [
     component: () => import('../views/blog/blog.vue'),
     meta: {
       keepAlive: true
-    },
-    beforeEnter (to, from, next) {
-      if (from.path !== '/detail' || from.query.title) {
-        from.meta.keepAlive = false
-        next()
-      }
     }
+    // beforeEnter (to, from, next) {
+    //   if (from.path !== '/detail' || from.query.title) {
+    //     from.meta.keepAlive = false
+    //     next()
+    //   }
+    // }
   },
   {
     path: '/self',
     name: 'Self',
-    component: () => import('../views/self/self.vue'),
-    meta: {
-      keepAlive: false
-    }
+    component: () => import('../views/self/self.vue')
   },
   {
     path: '/login',

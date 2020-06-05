@@ -34,8 +34,12 @@
     mounted () {
       this.$nextTick(() => {
         this.getContentList()
-        this.goTop()
         window.addEventListener('scroll', throttle(this.onScroll, 1000))
+      })
+    },
+    beforeRouteEnter (to, from, next) {
+      next(vm => {
+        window.scrollTo(0, vm.$store.state.scrollTop)
       })
     },
     // 组件销毁后移除监听事件
@@ -43,14 +47,14 @@
       window.removeEventListener('scroll', throttle(this.onScroll, 1000))
     },
     beforeRouteLeave (to, from, next) {
+      this.$store.commit('changeScrollTop', document.documentElement.scrollTop)
       to.meta.keepAlive = false
+      if (to.path !== '/detail') {
+        this.$store.commit('changeScrollTop', 0)
+      }
       next()
     },
     methods: {
-      // 设置滚动条位置
-      goTop () {
-        window.scrollTo(0, 0)
-      },
       // 滚动加载
       onScroll () {
         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop

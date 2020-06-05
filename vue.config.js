@@ -2,7 +2,7 @@ const path = require('path')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
 // 定义压缩文件类型
-const productionGzipExtensions = ['js', 'css']
+const productionGzipExtensions = ['js', 'css', 'png']
 
 // const webpack = require('webpack')
 
@@ -14,6 +14,7 @@ module.exports = {
   // publicPath: process.env.NODE_ENV === 'production'
   //   ? '//your_url'
   //   : '/',
+  mode: 'production',
   publicPath: './',
 
   outputDir: 'dist',
