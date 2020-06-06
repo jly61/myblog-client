@@ -50,17 +50,17 @@ const routes = [
     meta: {
       index: 4
     }
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import('../views/login/login.vue')
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: () => import('../views/register/register.vue')
   }
+  // {
+  //   path: '/login',
+  //   name: 'Login',
+  //   component: () => import('../views/login/login.vue')
+  // },
+  // {
+  //   path: '/register',
+  //   name: 'Register',
+  //   component: () => import('../views/register/register.vue')
+  // }
 ]
 
 const router = new VueRouter({
