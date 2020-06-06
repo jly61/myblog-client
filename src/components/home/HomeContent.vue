@@ -1,7 +1,7 @@
 <template>
   <div class="home-content">
-    <div class="article-wrapper" v-for="(content, index) in contentList" :key="index">
-      <a class="article-img" href="#" @click="onArticleClick($event, content.title)" >
+    <div class="article-wrapper" v-for="(content, index) in contentList" :key="index" @click="onArticleClick($event, content.title)" >
+      <a class="article-img" href="#">
 <!--        <img src="../../assets/images/680x440.png">-->
         <img :src="content.imgUrl">
       </a>
@@ -80,6 +80,9 @@
       margin-top: 100px;
       justify-content: center;
       align-items: center;
+      &:hover {
+        cursor: pointer;
+      }
       &:before {
         content: '';
         display: block;

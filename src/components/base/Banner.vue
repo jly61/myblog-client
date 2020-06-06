@@ -12,7 +12,7 @@
 <style scoped lang="scss">
   .banner {
     height: 450px;
-    background: red url("../../assets/images/bg2.jpg") no-repeat center center;
+    background: url("../../assets/images/bg2.jpg") no-repeat center center;
     /*background: url("http://qbaj8dxcr.bkt.clouddn.com/bg.jpg") no-repeat center center;*/
     background-size: cover;
   }

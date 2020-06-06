@@ -12,8 +12,10 @@
 
 <style scoped lang="scss">
   .home-footer {
+    position: absolute;
+    width: 100%;
+    bottom: -200px;
     height: 200px;
-    /*margin-top: 100px;*/
     color: #fff;
     text-align: center;
     background: #444;

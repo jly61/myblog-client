@@ -10,7 +10,8 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      keepAlive: true
+      keepAlive: true,
+      index: 1
     }
     // beforeEnter (to, from, next) {
     //   if (from.path !== '/detail' || from.query.title) {
@@ -22,14 +23,18 @@ const routes = [
   {
     path: '/detail',
     name: 'Detail',
-    component: () => import('../views/detail/detail.vue')
+    component: () => import('../views/detail/detail.vue'),
+    meta: {
+      index: 3
+    }
   },
   {
     path: '/blog',
     name: 'Blog',
     component: () => import('../views/blog/blog.vue'),
     meta: {
-      keepAlive: true
+      keepAlive: true,
+      index: 2
     }
     // beforeEnter (to, from, next) {
     //   if (from.path !== '/detail' || from.query.title) {
@@ -41,7 +46,10 @@ const routes = [
   {
     path: '/self',
     name: 'Self',
-    component: () => import('../views/self/self.vue')
+    component: () => import('../views/self/self.vue'),
+    meta: {
+      index: 4
+    }
   },
   {
     path: '/login',

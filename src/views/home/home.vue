@@ -31,6 +31,16 @@
         scroll: 0 // 记录滚动高度
       }
     },
+    // watch: {
+    //   contentList () {
+    //     if (this.contentList.length > 0) {
+    //       setTimeout(function () {
+    //         this.isShowLoading = false
+    //         console.log(this.isShowLoading)
+    //       }, 500)
+    //     }
+    //   }
+    // },
     mounted () {
       this.$nextTick(() => {
         this.getContentList()
