@@ -3,12 +3,12 @@
 <!--    <Loading v-if="isShowLoading" />-->
     <Nav/>
     <BackTop/>
-    <transition :name="transitionName" mode="out-in">
-      <keep-alive>
+    <transition :name="transitionName">
+<!--      <keep-alive>-->
         <router-view class="view" v-if="$route.meta.keepAlive" />
-      </keep-alive>
+<!--      </keep-alive>-->
     </transition>
-    <transition :name="transitionName" mode="out-in">
+    <transition :name="transitionName">
       <router-view class="view" v-if="!$route.meta.keepAlive" />
     </transition>
 <!--    <Footer />-->
