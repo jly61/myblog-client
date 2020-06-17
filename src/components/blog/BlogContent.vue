@@ -78,6 +78,9 @@
           const data = res.data
           if (data.status === 0) {
             this.articleList = data.result
+            data.result.forEach(item => {
+              item.update_time = item.update_time.split('T')[0]
+            })
             this.lastCategory = category
           }
         })
