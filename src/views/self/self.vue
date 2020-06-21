@@ -1,6 +1,5 @@
 <template>
     <div class="self">
-<!--      <Banner />-->
       <SelfAbout />
     </div>
 </template>

@@ -1,6 +1,6 @@
 import { get, post } from '@/utils/util'
 
-const SERVER_URL = 'http://localhost'
+const SERVER_URL = 'http://localhost:3000'
 
 // 获取文章列表
 export function getContentList (params) {

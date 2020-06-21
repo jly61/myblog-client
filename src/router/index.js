@@ -44,6 +44,14 @@ const routes = [
     // }
   },
   {
+    path: '/archive',
+    name: 'Archive',
+    component: () => import('../views/archive/archive.vue'),
+    meta: {
+      index: 4
+    }
+  },
+  {
     path: '/self',
     name: 'Self',
     component: () => import('../views/self/self.vue'),

@@ -5,6 +5,7 @@
       <nav v-if="showNav" @click="onCloseClick">
         <router-link to="/" class="router">首页</router-link>
         <router-link to="/blog" class="router">分类</router-link>
+        <router-link to="/archive" class="router">归档</router-link>
         <router-link to="/self" class="router">关于</router-link>
         <a href="https://github.com/Lovelesss" class="router" target="_blank">GitHub</a>
       </nav>
